@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://portfolio-emmanuel.vercel.app/sitemap.xml
+Sitemap: https://portfolio-emmanuel_davezac.vercel.app/sitemap.xml
 
 # Delay for bots (in seconds)
 Crawl-delay: 1
