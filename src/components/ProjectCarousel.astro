@@ -1,0 +1,161 @@
+---
+interface Props {
+  projectName: string;
+  totalImages: number;
+  alt: string;
+}
+
+const { projectName, totalImages, alt } = Astro.props;
+const images = Array.from({ length: totalImages }, (_, i) => 
+  `/projects/${projectName}-${i + 1}.webp`
+);
+const carouselId = `carousel-${projectName}`;
+---
+
+<div 
+  class="carousel-container relative w-full overflow-hidden rounded-lg bg-surface2 border border-line select-none group/carousel" 
+  id={carouselId} 
+  data-total={totalImages}
+>
+  <!-- Track horizontal con GPU acceleration para transición ultra fluida -->
+  <div class="carousel-track flex w-full transition-transform duration-500 ease-out will-change-transform">
+    {images.map((src, index) => (
+      <div class="carousel-slide w-full shrink-0 aspect-[16/10] sm:aspect-[16/9] max-h-72 overflow-hidden bg-surface2 flex items-center justify-center">
+        <img 
+          src={src} 
+          alt={`${alt} — captura ${index + 1}`}
+          loading={index === 0 ? "eager" : "lazy"}
+          decoding="async"
+          class="w-full h-full object-cover object-center transition-transform duration-500 group-hover/carousel:scale-[1.02]"
+        />
+      </div>
+    ))}
+  </div>
+  
+  {totalImages > 1 && (
+    <>
+      <!-- Botón Anterior -->
+      <button 
+        type="button"
+        class="carousel-prev absolute left-2.5 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-surface/85 hover:bg-surface text-slate-200 hover:text-amber border border-line/80 backdrop-blur flex items-center justify-center transition-all opacity-80 sm:opacity-0 group-hover/carousel:opacity-100 focus:opacity-100 hover:scale-110 cursor-pointer shadow-lg"
+        aria-label="Imagen anterior"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+      
+      <!-- Botón Siguiente -->
+      <button 
+        type="button"
+        class="carousel-next absolute right-2.5 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-surface/85 hover:bg-surface text-slate-200 hover:text-amber border border-line/80 backdrop-blur flex items-center justify-center transition-all opacity-80 sm:opacity-0 group-hover/carousel:opacity-100 focus:opacity-100 hover:scale-110 cursor-pointer shadow-lg"
+        aria-label="Imagen siguiente"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+      
+      <!-- Indicador contador numérico sutil -->
+      <div class="absolute top-2.5 right-2.5 z-10 px-2 py-0.5 rounded-md bg-bg/80 border border-line/60 backdrop-blur font-mono text-[10px] text-slate-400 select-none">
+        <span class="carousel-counter-current text-slate-200 font-semibold">1</span>/{totalImages}
+      </div>
+
+      <!-- Puntos (Dots) interactivos -->
+      <div class="carousel-dots absolute bottom-2.5 left-1/2 -translate-x-1/2 z-10 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-bg/70 backdrop-blur border border-line/50">
+        {images.map((_, index) => (
+          <button
+            type="button"
+            class={`carousel-dot h-1.5 rounded-full transition-all duration-300 cursor-pointer ${index === 0 ? 'w-5 bg-amber' : 'w-1.5 bg-slate-500/60 hover:bg-slate-400'}`}
+            data-index={index}
+            aria-label={`Ir a imagen ${index + 1}`}
+          />
+        ))}
+      </div>
+    </>
+  )}
+</div>
+
+<script>
+  function setupCarousels() {
+    document.querySelectorAll('.carousel-container').forEach((container) => {
+      const carousel = container as HTMLElement;
+      if (carousel.dataset.initialized === 'true') return;
+      carousel.dataset.initialized = 'true';
+
+      const track = carousel.querySelector('.carousel-track') as HTMLElement | null;
+      const prevBtn = carousel.querySelector('.carousel-prev') as HTMLButtonElement | null;
+      const nextBtn = carousel.querySelector('.carousel-next') as HTMLButtonElement | null;
+      const dots = carousel.querySelectorAll('.carousel-dot') as NodeListOf<HTMLButtonElement>;
+      const counterCurrent = carousel.querySelector('.carousel-counter-current') as HTMLElement | null;
+      const total = parseInt(carousel.dataset.total || '1', 10);
+
+      if (!track || total <= 1) return;
+
+      let currentIndex = 0;
+
+      function updateSlide(index: number) {
+        currentIndex = (index + total) % total;
+        if (track) {
+          track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        if (counterCurrent) {
+          counterCurrent.textContent = String(currentIndex + 1);
+        }
+
+        dots.forEach((dot, idx) => {
+          if (idx === currentIndex) {
+            dot.className = 'carousel-dot h-1.5 w-5 bg-amber rounded-full transition-all duration-300 cursor-pointer';
+          } else {
+            dot.className = 'carousel-dot h-1.5 w-1.5 bg-slate-500/60 hover:bg-slate-400 rounded-full transition-all duration-300 cursor-pointer';
+          }
+        });
+      }
+
+      prevBtn?.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        updateSlide(currentIndex - 1);
+      });
+
+      nextBtn?.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        updateSlide(currentIndex + 1);
+      });
+
+      dots.forEach((dot) => {
+        dot.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const targetIndex = parseInt(dot.dataset.index || '0', 10);
+          updateSlide(targetIndex);
+        });
+      });
+
+      // Swipe táctil en móviles
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      carousel.addEventListener('touchstart', (e: TouchEvent) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      carousel.addEventListener('touchend', (e: TouchEvent) => {
+        touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+        if (Math.abs(diff) > 40) {
+          if (diff > 0) {
+            updateSlide(currentIndex + 1);
+          } else {
+            updateSlide(currentIndex - 1);
+          }
+        }
+      }, { passive: true });
+    });
+  }
+
+  setupCarousels();
+  document.addEventListener('astro:page-load', setupCarousels);
+</script>

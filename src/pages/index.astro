@@ -1,17 +1,1042 @@
 ---
-
+// src/pages/index.astro
+// Portafolio — Emmanuel Davezac
+// Tailwind + Fontsource + lucide-astro instalados localmente (sin CDN).
+import "../styles/global.css";
+import { Github, Linkedin, Mail, FileDown, Copy, Check } from "lucide-astro";
+import ProjectCarousel from "../components/ProjectCarousel.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Meta Tags -->
+    <title>Emmanuel Davezac — Fullstack Developer</title>
+    <meta
+      name="description"
+      content="Portafolio de Emmanuel Davezac, Fullstack Developer especializado en React, Django, .NET. Proyectos reales en producción: SGA, Secure Campus, E-Library, GIBD."
+    />
+    <meta
+      name="keywords"
+      content="Fullstack Developer, React, Django, .NET, TypeScript, JavaScript, Desarrollador Web"
+    />
+    <meta name="author" content="Emmanuel Davezac" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0F172A" />
+
+    <!-- Open Graph Tags -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Emmanuel Davezac — Fullstack Developer"
+    />
+    <meta
+      property="og:description"
+      content="Portafolio profesional con proyectos fullstack: SGA, Secure Campus, E-Library, GIBD. Stack: React, Django, .NET, TypeScript."
+    />
+    <meta property="og:url" content="https://portfolio-emmanuel.vercel.app" />
+    <meta
+      property="og:image"
+      content="https://portfolio-emmanuel.vercel.app/projects/sga-1.webp"
+    />
+    <meta property="og:image:alt" content="Portafolio de Emmanuel Davezac" />
+    <meta property="og:site_name" content="Portafolio ED" />
+    <meta property="og:locale" content="es_AR" />
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Emmanuel Davezac — Fullstack Developer"
+    />
+    <meta
+      name="twitter:description"
+      content="Portafolio profesional con proyectos fullstack en React, Django y .NET"
+    />
+    <meta
+      name="twitter:image"
+      content="https://portfolio-emmanuel.vercel.app/projects/sga-1.webp"
+    />
+
+    <!-- Additional Meta Tags -->
+    <meta name="language" content="Spanish" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="creator" content="Emmanuel Davezac" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://portfolio-emmanuel.vercel.app" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  </head>
+
+  <body class="font-sans text-slate-300 antialiased">
+    <!-- NAV -->
+    <header
+      class="fixed top-0 inset-x-0 z-50 border-b border-line/60 bg-bg/80 backdrop-blur"
+    >
+      <nav
+        class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between"
+      >
+        <a
+          href="#top"
+          class="font-display font-semibold text-slate-100 tracking-tight"
+        >
+          ED<span class="text-amber">.</span>
+        </a>
+        <div
+          class="hidden sm:flex items-center gap-8 font-mono text-xs text-slate-400"
+        >
+          <a href="#proyectos" class="hover:text-amber transition-colors"
+            >proyectos</a
+          >
+          <a href="#experiencia" class="hover:text-amber transition-colors"
+            >experiencia</a
+          >
+          <a href="#skills" class="hover:text-amber transition-colors">skills</a
+          >
+          <a href="#educacion" class="hover:text-amber transition-colors"
+            >educación</a
+          >
+          <a href="#contacto" class="hover:text-amber transition-colors"
+            >contacto</a
+          >
+        </div>
+        <a
+          href="mailto:soyemmanueldavezac@gmail.com"
+          class="font-mono text-xs px-3 py-1.5 rounded border border-line text-slate-300 hover:border-amber hover:text-amber transition-colors"
+        >
+          contactar
+        </a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section id="top" class="max-w-5xl mx-auto px-6 pt-36 sm:pt-44 pb-20">
+      <div
+        class="flex flex-col-reverse md:flex-row items-center md:items-start justify-between gap-10 md:gap-12"
+      >
+        <!-- Texto -->
+        <div class="flex-1 text-center md:text-left">
+          <p
+            class="prompt font-mono text-sm text-slate-500 mb-4 inline-block md:block"
+          >
+            whoami<span class="cursor">_</span>
+          </p>
+          <h1
+            class="font-display font-bold text-4xl sm:text-6xl text-slate-100 leading-[1.1] tracking-tight"
+          >
+            Emmanuel<br />
+            <span class="text-amber">Davezac</span>
+          </h1>
+          <p
+            class="mt-5 font-mono text-sm sm:text-base text-slate-400 max-w-xl"
+          >
+            Fullstack Developer — React · Django · .NET
+          </p>
+          <p class="mt-6 text-slate-400 max-w-xl leading-relaxed">
+            Construyo aplicaciones fullstack de punta a punta: del diseño al
+            despliegue en producción. Software real para negocios reales — desde
+            sistemas de gestión aduanera hasta plataformas con foco en
+            seguridad.
+          </p>
+
+          <div
+            class="mt-9 flex flex-wrap items-center justify-center md:justify-start gap-3"
+          >
+            <a
+              href="/cv.pdf"
+              download="CV-Luciano-Emmanuel-Davezac.pdf"
+              class="glow inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-amber text-slate-950 text-sm font-semibold hover:bg-amber/90 transition-all"
+            >
+              <FileDown size={16} />
+              Descargar CV
+            </a>
+            <a
+              href="https://github.com/EmmaDavezac"
+              target="_blank"
+              rel="noopener"
+              class="glow inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-surface2 border border-line text-slate-200 text-sm font-medium hover:border-slate-400 transition-colors"
+            >
+              <Github size={16} />
+              GitHub
+            </a>
+            <a
+              href="https://linkedin.com/in/emmanueldavezac"
+              target="_blank"
+              rel="noopener"
+              class="glow inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-surface2 border border-line text-slate-200 text-sm font-medium hover:border-slate-400 transition-colors"
+            >
+              <Linkedin size={16} />
+              LinkedIn
+            </a>
+            <a
+              href="https://wa.me/5493438471858?text=Hola%20Emmanuel,%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20conversar."
+              target="_blank"
+              rel="noopener"
+              title="Escribime por WhatsApp"
+              class="glow inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-surface2 border border-emerald-500/40 text-emerald-300 hover:border-emerald-400 hover:bg-emerald-500/10 text-sm font-medium transition-all"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="text-emerald-400 shrink-0"
+              >
+                <path
+                  d="M17.5 14.4c-.3-.1-1.7-.8-2-1-.3-.1-.5-.1-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-1.6-.7-2.7-1.5-3.5-2.9-.2-.3 0-.5.1-.6.1-.2.3-.4.5-.6.2-.2.2-.4.3-.6.1-.2 0-.4 0-.6-.1-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.4-1.2 1.2-1.2 2.9s1.2 3.4 1.4 3.6c.2.2 2.4 3.7 5.8 5.1 2.8 1.2 3.4 1 4 .9.7-.1 2.2-.9 2.5-1.8.3-.9.3-1.6.2-1.8-.1-.2-.3-.3-.6-.4zM12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.2L2 22l4.9-1.3C8.3 21.5 10.1 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.3.9.9-3.2-.2-.3c-.9-1.4-1.3-3-1.3-4.6 0-4.5 3.7-8.2 8.2-8.2s8.2 3.7 8.2 8.2-3.7 8.4-8.1 8.4z"
+                ></path>
+              </svg>
+              WhatsApp
+            </a>
+            <a
+              href="mailto:soyemmanueldavezac@gmail.com"
+              class="glow inline-flex items-center gap-2 px-5 py-2.5 rounded-md border border-amberdim text-amber text-sm font-medium hover:bg-amber/10 transition-colors"
+            >
+              <Mail size={16} />
+              Escribime
+            </a>
+          </div>
+        </div>
+
+        <!-- Foto de Perfil con Glow -->
+        <div class="relative shrink-0 group">
+          <!-- Glow ambiental -->
+          <div
+            class="absolute -inset-2 bg-gradient-to-br from-amber/25 via-amber/10 to-transparent rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition duration-500"
+          >
+          </div>
+
+          <!-- Marco de foto -->
+          <div
+            class="relative w-44 h-44 sm:w-56 sm:h-56 rounded-2xl overflow-hidden border border-line group-hover:border-amber/60 bg-surface2 shadow-2xl transition-all duration-300"
+          >
+            <img
+              src="/profile.webp"
+              alt="Emmanuel Davezac"
+              class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+              onerror="this.onerror=null; this.src='/profile-placeholder.svg';"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROYECTOS -->
+    <section
+      id="proyectos"
+      class="max-w-5xl mx-auto px-6 py-20 border-t border-line/60"
+    >
+      <div class="mb-12">
+        <p class="font-mono text-xs text-amber mb-2">proyectos/</p>
+        <h2 class="font-display font-bold text-2xl sm:text-3xl text-slate-100">
+          Proyectos destacados
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Proyecto 1: Destacado Principal (Ancho completo en PC) -->
+        <article
+          class="glow group rounded-xl border border-line bg-surface p-6 sm:p-8 md:col-span-2 flex flex-col md:flex-row gap-6 md:gap-8 items-start"
+        >
+          <div
+            class="w-full md:w-1/2 shrink-0 overflow-hidden rounded-lg border border-line bg-surface2"
+          >
+            <ProjectCarousel
+              projectName="sga"
+              totalImages={6}
+              alt="SGA - Sistema de Gestión de Operaciones Aduaneras"
+            />
+          </div>
+          <div class="flex-1 flex flex-col justify-between h-full w-full">
+            <div>
+              <div
+                class="flex flex-wrap items-start justify-between gap-3 mb-3"
+              >
+                <h3 class="font-display font-semibold text-xl text-slate-100">
+                  SGA — Sistema de Gestión de Operaciones Aduaneras
+                </h3>
+                <span
+                  class="font-mono text-[11px] text-amber bg-amber/10 border border-amber/20 px-2.5 py-0.5 rounded whitespace-nowrap"
+                >
+                  proyecto final de carrera
+                </span>
+              </div>
+              <p
+                class="text-slate-400 leading-relaxed mb-5 text-sm sm:text-base"
+              >
+                Plataforma web full-stack para una empresa real de comercio
+                exterior (~100 operaciones mensuales, 74+ clientes), que
+                reemplazó un flujo manual en planillas por un sistema con
+                autenticación segura, alertas automáticas por vencimientos y
+                control de acceso por roles.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span
+                  class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                  >React</span
+                >
+                <span
+                  class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                  >Django REST</span
+                >
+                <span
+                  class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                  >JWT + CAPTCHA</span
+                >
+                <span
+                  class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                  >Docker Compose</span
+                >
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-3 mt-auto pt-2">
+              <a
+                href="https://sistema-gestion-aduanera-sga.vercel.app"
+                target="_blank"
+                rel="noopener"
+                class="inline-flex items-center justify-center rounded-md border border-amber/60 bg-amber/10 px-4 py-2 text-sm font-medium text-amber transition-colors hover:bg-amber hover:text-slate-950"
+              >
+                Demo
+              </a>
+              <a
+                href="https://github.com/EmmaDavezac/Sistema-Gestion-Aduanera-SGA"
+                target="_blank"
+                rel="noopener"
+                class="inline-flex items-center justify-center rounded-md border border-slate-600 bg-surface2 px-4 py-2 text-sm font-medium text-slate-200 transition-colors hover:border-slate-400 hover:text-white"
+              >
+                Código
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Proyecto 2 -->
+        <article
+          class="glow group rounded-xl border border-line bg-surface p-6 sm:p-7 flex flex-col justify-between h-full"
+        >
+          <div>
+            <div
+              class="mb-5 overflow-hidden rounded-lg border border-line bg-surface2"
+            >
+              <ProjectCarousel
+                projectName="secure-campus"
+                totalImages={5}
+                alt="Secure Campus IA"
+              />
+            </div>
+            <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
+              <h3
+                class="font-display font-semibold text-lg sm:text-xl text-slate-100"
+              >
+                Secure Campus IA
+              </h3>
+              <span
+                class="font-mono text-[11px] text-slate-500 whitespace-nowrap"
+                >trabajo en equipo · 3 devs</span
+              >
+            </div>
+            <p class="text-slate-400 leading-relaxed mb-5 text-sm">
+              Aplicación web con chat de IA construida con foco integral en
+              seguridad informática: autenticación OAuth, Web Application
+              Firewall, defensa multicapa contra prompt injection, cifrado de
+              datos sensibles y auditoría.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >Next.js</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >TypeScript</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >Supabase</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >NextAuth</span
+              >
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-3 mt-auto pt-2">
+            <a
+              href="https://utn-sec-info-2026.vercel.app"
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center justify-center rounded-md border border-emerald-500/60 bg-emerald-500/10 px-4 py-2 text-sm font-medium text-emerald-300 transition-colors hover:bg-emerald-500 hover:text-slate-950"
+            >
+              Demo
+            </a>
+            <a
+              href="https://github.com/EmmaDavezac/utn-sec-info-2026"
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center justify-center rounded-md border border-slate-600 bg-surface2 px-4 py-2 text-sm font-medium text-slate-200 transition-colors hover:border-slate-400 hover:text-white"
+            >
+              Código
+            </a>
+          </div>
+        </article>
+
+        <!-- Proyecto 3 -->
+        <article
+          class="glow group rounded-xl border border-line bg-surface p-6 sm:p-7 flex flex-col justify-between h-full"
+        >
+          <div>
+            <div
+              class="mb-5 overflow-hidden rounded-lg border border-line bg-surface2"
+            >
+              <ProjectCarousel
+                projectName="evolet-nails"
+                totalImages={3}
+                alt="Evolet Nails - Sistema de Gestión"
+              />
+            </div>
+            <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
+              <h3
+                class="font-display font-semibold text-lg sm:text-xl text-slate-100"
+              >
+                Evolet Nails — Sistema de Gestión
+              </h3>
+              <span
+                class="font-mono text-[11px] text-slate-500 whitespace-nowrap"
+                >freelance · producción</span
+              >
+            </div>
+            <p class="text-slate-400 leading-relaxed mb-5 text-sm">
+              PWA full-stack desarrollada end-to-end para un salón de uñas real,
+              digitalizando un flujo antes manejado en papel y WhatsApp: turnos,
+              cobros, gastos, caja y estadísticas de negocio.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >React</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >Vite</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >Supabase</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >PWA</span
+              >
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-3 mt-auto pt-2">
+            <a
+              href="https://sgen-mu.vercel.app/"
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center justify-center rounded-md border border-pink-500/60 bg-pink-500/10 px-4 py-2 text-sm font-medium text-pink-300 transition-colors hover:bg-pink-500 hover:text-slate-950"
+            >
+              Demo
+            </a>
+            <a
+              href="https://github.com/EmmaDavezac/SGEN"
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center justify-center rounded-md border border-slate-600 bg-surface2 px-4 py-2 text-sm font-medium text-slate-200 transition-colors hover:border-slate-400 hover:text-white"
+            >
+              Código
+            </a>
+          </div>
+        </article>
+
+        <!-- Proyecto 4: GIBD -->
+        <article
+          class="glow group rounded-xl border border-line bg-surface p-6 sm:p-7 flex flex-col justify-between h-full"
+        >
+          <div>
+            <div
+              class="mb-5 overflow-hidden rounded-lg border border-line bg-surface2"
+            >
+              <ProjectCarousel
+                projectName="gibd"
+                totalImages={6}
+                alt="GIBD - Grupo de Investigación en Bases de Datos"
+              />
+            </div>
+            <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
+              <h3
+                class="font-display font-semibold text-lg sm:text-xl text-slate-100"
+              >
+                GIBD — Grupo de Investigación en Bases de Datos
+              </h3>
+              <span
+                class="font-mono text-[11px] text-slate-500 whitespace-nowrap"
+                >becario investigador</span
+              >
+            </div>
+            <p class="text-slate-400 leading-relaxed mb-5 text-sm">
+              Plataforma web que unifica toda la información del grupo de
+              investigación en bases de datos: publicación y gestión de papers
+              científicos, noticias sobre investigaciones, y demostración
+              interactiva de los modelos y prototipos desarrollados por el
+              grupo.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >React</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >TypeScript</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >Vite</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >Supabase</span
+              >
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-3 mt-auto pt-2">
+            <a
+              href="https://gibd.vercel.app/"
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center justify-center rounded-md border border-cyan-500/60 bg-cyan-500/10 px-4 py-2 text-sm font-medium text-cyan-300 transition-colors hover:bg-cyan-500 hover:text-slate-950"
+            >
+              Demo
+            </a>
+            <a
+              href="https://github.com/ThiagoJGK/gibd"
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center justify-center rounded-md border border-slate-600 bg-surface2 px-4 py-2 text-sm font-medium text-slate-200 transition-colors hover:border-slate-400 hover:text-white"
+            >
+              Código
+            </a>
+          </div>
+        </article>
+
+        <!-- Proyecto 5: E-Library -->
+        <article
+          class="glow group rounded-xl border border-line bg-surface p-6 sm:p-7 flex flex-col justify-between h-full"
+        >
+          <div>
+            <div
+              class="mb-5 overflow-hidden rounded-lg border border-line bg-surface2"
+            >
+              <ProjectCarousel
+                projectName="E-Library"
+                totalImages={2}
+                alt="E-Library - Sistema de Gestión de Préstamos de Biblioteca"
+              />
+            </div>
+            <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
+              <h3
+                class="font-display font-semibold text-lg sm:text-xl text-slate-100"
+              >
+                E-Library — Sistema de Gestión de Préstamos
+              </h3>
+              <span
+                class="font-mono text-[11px] text-slate-500 whitespace-nowrap"
+                >proyecto final de cátedra</span
+              >
+            </div>
+            <p class="text-slate-400 leading-relaxed mb-5 text-sm">
+              Sistema de gestión de biblioteca desarrollado como proyecto final
+              de Taller de Programación. Gestión completa de libros (integración
+              con Open Library API), usuarios, préstamos y devoluciones, sistema
+              de scoring, notificaciones automáticas y reportes de vencimientos.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >C#</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >.NET</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >WinForms</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >SQL Server</span
+              >
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-3 mt-auto pt-2">
+            <a
+              href="https://github.com/EmmaDavezac/E-Library"
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center justify-center rounded-md border border-slate-600 bg-surface2 px-4 py-2 text-sm font-medium text-slate-200 transition-colors hover:border-slate-400 hover:text-white"
+            >
+              Código
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPERIENCIA -->
+    <section
+      id="experiencia"
+      class="max-w-5xl mx-auto px-6 py-20 border-t border-line/60"
+    >
+      <div class="mb-12">
+        <p class="font-mono text-xs text-amber mb-2">experiencia/</p>
+        <h2 class="font-display font-bold text-2xl sm:text-3xl text-slate-100">
+          Trayectoria y Experiencia
+        </h2>
+      </div>
+
+      <div
+        class="relative border-l border-line/80 ml-3 sm:ml-4 pl-6 sm:pl-8 space-y-10"
+      >
+        <!-- Item 1: Becario de Investigación GIBD -->
+        <div class="relative group">
+          <div
+            class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-3.5 h-3.5 rounded-full border-2 border-bg bg-amber ring-4 ring-surface"
+          >
+          </div>
+          <div class="flex flex-wrap items-baseline justify-between gap-2 mb-1">
+            <h3
+              class="font-display font-semibold text-lg sm:text-xl text-slate-100 group-hover:text-amber transition-colors"
+            >
+              Becario de Investigación en Bases de Datos
+            </h3>
+            <span
+              class="font-mono text-xs text-amber bg-amber/10 border border-amber/20 px-2 py-0.5 rounded"
+            >
+              2024 — Presente
+            </span>
+          </div>
+          <p class="font-mono text-xs text-slate-400 mb-3">
+            GIBD — Grupo de Investigación en Bases de Datos · UTN FRCU
+          </p>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">
+            Participación activa en el desarrollo y mantenimiento de la
+            plataforma web institucional para la difusión de investigaciones
+            científicas, publicaciones académicas y demostradores interactivos
+            de prototipos y modelos de datos.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span
+              class="font-mono text-[11px] px-2.5 py-0.5 rounded bg-surface2 border border-line text-slate-300"
+              >React</span
+            >
+            <span
+              class="font-mono text-[11px] px-2.5 py-0.5 rounded bg-surface2 border border-line text-slate-300"
+              >TypeScript</span
+            >
+            <span
+              class="font-mono text-[11px] px-2.5 py-0.5 rounded bg-surface2 border border-line text-slate-300"
+              >Vite</span
+            >
+            <span
+              class="font-mono text-[11px] px-2.5 py-0.5 rounded bg-surface2 border border-line text-slate-300"
+              >Supabase</span
+            >
+          </div>
+        </div>
+
+        <!-- Item 2: Desarrollador Fullstack Freelance -->
+        <div class="relative group">
+          <div
+            class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-3.5 h-3.5 rounded-full border-2 border-bg bg-slate-500 group-hover:bg-amber ring-4 ring-surface transition-colors"
+          >
+          </div>
+          <div class="flex flex-wrap items-baseline justify-between gap-2 mb-1">
+            <h3
+              class="font-display font-semibold text-lg sm:text-xl text-slate-100 group-hover:text-amber transition-colors"
+            >
+              Desarrollador Fullstack Freelance
+            </h3>
+            <span
+              class="font-mono text-xs text-slate-400 bg-surface2 border border-line px-2 py-0.5 rounded"
+            >
+              2023 — Presente
+            </span>
+          </div>
+          <p class="font-mono text-xs text-slate-400 mb-3">
+            Clientes reales · Software en producción
+          </p>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">
+            Diseño, arquitectura, desarrollo y despliegue integral de soluciones
+            de software a medida. Implementación de sistemas de gestión
+            empresarial en entornos reales: PWA para salón de belleza (Evolet
+            Nails) y plataforma de gestión operativa aduanera (SGA) con control
+            de acceso por roles, autenticación segura y base de datos
+            relacional.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span
+              class="font-mono text-[11px] px-2.5 py-0.5 rounded bg-surface2 border border-line text-slate-300"
+              >React</span
+            >
+            <span
+              class="font-mono text-[11px] px-2.5 py-0.5 rounded bg-surface2 border border-line text-slate-300"
+              >Django REST</span
+            >
+            <span
+              class="font-mono text-[11px] px-2.5 py-0.5 rounded bg-surface2 border border-line text-slate-300"
+              >PostgreSQL</span
+            >
+            <span
+              class="font-mono text-[11px] px-2.5 py-0.5 rounded bg-surface2 border border-line text-slate-300"
+              >Docker</span
+            >
+            <span
+              class="font-mono text-[11px] px-2.5 py-0.5 rounded bg-surface2 border border-line text-slate-300"
+              >PWA</span
+            >
+          </div>
+        </div>
+
+        <!-- Item 3: Desarrollo en Seguridad & Proyectos Universitarios -->
+        <div class="relative group">
+          <div
+            class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-3.5 h-3.5 rounded-full border-2 border-bg bg-slate-500 group-hover:bg-amber ring-4 ring-surface transition-colors"
+          >
+          </div>
+          <div class="flex flex-wrap items-baseline justify-between gap-2 mb-1">
+            <h3
+              class="font-display font-semibold text-lg sm:text-xl text-slate-100 group-hover:text-amber transition-colors"
+            >
+              Desarrollo en Proyectos de Ingeniería & Seguridad
+            </h3>
+            <span
+              class="font-mono text-xs text-slate-400 bg-surface2 border border-line px-2 py-0.5 rounded"
+            >
+              2022 — 2026
+            </span>
+          </div>
+          <p class="font-mono text-xs text-slate-400 mb-3">
+            UTN FRCU — Carrera de Ingeniería en Sistemas de Información
+          </p>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">
+            Liderazgo y desarrollo técnico en equipos de ingeniería.
+            Implementación de arquitecturas seguras (WAF, OAuth, mitigación de
+            inyecciones de prompt en IA con Secure Campus) y sistemas de
+            escritorio empresariales bajo el ecosistema .NET / C# con SQL
+            Server.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span
+              class="font-mono text-[11px] px-2.5 py-0.5 rounded bg-surface2 border border-line text-slate-300"
+              >Next.js</span
+            >
+            <span
+              class="font-mono text-[11px] px-2.5 py-0.5 rounded bg-surface2 border border-line text-slate-300"
+              >C# / .NET</span
+            >
+            <span
+              class="font-mono text-[11px] px-2.5 py-0.5 rounded bg-surface2 border border-line text-slate-300"
+              >Seguridad & OAuth</span
+            >
+            <span
+              class="font-mono text-[11px] px-2.5 py-0.5 rounded bg-surface2 border border-line text-slate-300"
+              >SQL Server</span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section
+      id="skills"
+      class="max-w-5xl mx-auto px-6 py-20 border-t border-line/60"
+    >
+      <div class="mb-12">
+        <p class="font-mono text-xs text-amber mb-2">skills/</p>
+        <h2 class="font-display font-bold text-2xl sm:text-3xl text-slate-100">
+          Habilidades
+        </h2>
+      </div>
+
+      <div class="grid sm:grid-cols-3 gap-6">
+        <div class="rounded-xl border border-line bg-surface p-6">
+          <h3
+            class="font-mono text-xs text-amber mb-4 uppercase tracking-wider"
+          >
+            Frontend
+          </h3>
+          <ul class="space-y-2.5 text-sm text-slate-300">
+            <li>React</li>
+            <li>Next.js</li>
+            <li>TypeScript</li>
+            <li>Vite</li>
+          </ul>
+        </div>
+        <div class="rounded-xl border border-line bg-surface p-6">
+          <h3
+            class="font-mono text-xs text-amber mb-4 uppercase tracking-wider"
+          >
+            Backend
+          </h3>
+          <ul class="space-y-2.5 text-sm text-slate-300">
+            <li>Python — Django / Flask / FastAPI</li>
+            <li>C# / .NET</li>
+            <li>Java — Spring</li>
+            <li>APIs REST</li>
+          </ul>
+        </div>
+        <div class="rounded-xl border border-line bg-surface p-6">
+          <h3
+            class="font-mono text-xs text-amber mb-4 uppercase tracking-wider"
+          >
+            Herramientas & Metodologías
+          </h3>
+          <ul class="space-y-2.5 text-sm text-slate-300">
+            <li>PostgreSQL / MySQL / Supabase</li>
+            <li>Docker · Git / GitHub</li>
+            <li>Jira · SCRUM · Kanban</li>
+            <li>Vercel</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCACIÓN -->
+    <section
+      id="educacion"
+      class="max-w-5xl mx-auto px-6 py-20 border-t border-line/60"
+    >
+      <div class="mb-12">
+        <p class="font-mono text-xs text-amber mb-2">educación/</p>
+        <h2 class="font-display font-bold text-2xl sm:text-3xl text-slate-100">
+          Educación
+        </h2>
+      </div>
+
+      <div class="space-y-4">
+        <div class="rounded-xl border border-line bg-surface p-5">
+          <p class="font-mono text-[11px] text-amber mb-2">2026</p>
+          <h3 class="font-semibold text-slate-100">
+            Analista Universitario en Desarrollo de Sistemas de Información
+          </h3>
+          <p class="mt-2 text-slate-400">UTN FRCU — finalizado</p>
+        </div>
+        <div class="rounded-xl border border-line bg-surface p-5">
+          <p class="font-mono text-[11px] text-amber mb-2">2019 — 2025</p>
+          <h3 class="font-semibold text-slate-100">
+            Ingeniería en Sistemas de Información
+          </h3>
+          <p class="mt-2 text-slate-400">UTN FRCU — último cuatrimestre</p>
+        </div>
+        <div class="rounded-xl border border-line bg-surface p-5">
+          <p class="font-mono text-[11px] text-amber mb-2">2023</p>
+          <h3 class="font-semibold text-slate-100">
+            Diplomatura Universitaria en Programación .NET
+          </h3>
+          <p class="mt-2 text-slate-400">UTN FRRe</p>
+        </div>
+        <div class="rounded-xl border border-line bg-surface p-5">
+          <p class="font-mono text-[11px] text-amber mb-2">2016</p>
+          <h3 class="font-semibold text-slate-100">
+            Tecnicatura en Electrónica
+          </h3>
+          <p class="mt-2 text-slate-400">EET N°44 Dr. Luis F. Leloir</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICACIONES -->
+    <section
+      id="certificaciones"
+      class="max-w-5xl mx-auto px-6 py-20 border-t border-line/60"
+    >
+      <div class="mb-12">
+        <p class="font-mono text-xs text-amber mb-2">certificaciones/</p>
+        <h2 class="font-display font-bold text-2xl sm:text-3xl text-slate-100">
+          Certificaciones
+        </h2>
+      </div>
+
+      <div class="grid gap-4 sm:grid-cols-2">
+        <div class="rounded-xl border border-line bg-surface p-5">
+          <p class="font-mono text-[11px] text-amber mb-2">2026</p>
+          <h3 class="font-semibold text-slate-100">Python — freeCodeCamp</h3>
+        </div>
+        <div class="rounded-xl border border-line bg-surface p-5">
+          <p class="font-mono text-[11px] text-amber mb-2">2023</p>
+          <h3 class="font-semibold text-slate-100">
+            Full Stack Python — Codo a Codo 4.0
+          </h3>
+        </div>
+        <div class="rounded-xl border border-line bg-surface p-5">
+          <p class="font-mono text-[11px] text-amber mb-2">2024</p>
+          <h3 class="font-semibold text-slate-100">
+            Full Stack Java — Codo a Codo 4.0
+          </h3>
+        </div>
+        <div class="rounded-xl border border-line bg-surface p-5">
+          <p class="font-mono text-[11px] text-amber mb-2">2023</p>
+          <h3 class="font-semibold text-slate-100">
+            Diplomatura en Programación .NET — UTN FRRe
+          </h3>
+        </div>
+        <div class="rounded-xl border border-line bg-surface p-5">
+          <p class="font-mono text-[11px] text-amber mb-2">2022</p>
+          <h3 class="font-semibold text-slate-100">
+            Programación Web - Front End Developer — UTN BA
+          </h3>
+        </div>
+        <div class="rounded-xl border border-line bg-surface p-5 sm:col-span-2">
+          <p class="font-mono text-[11px] text-amber mb-2">2022</p>
+          <h3 class="font-semibold text-slate-100">
+            Diseñador UX/UI — Codo a Codo 4.0
+          </h3>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO / FOOTER -->
+    <footer id="contacto" class="border-t border-line/60">
+      <div class="max-w-5xl mx-auto px-6 py-16 text-center">
+        <p class="font-mono text-xs text-amber mb-3">contacto/</p>
+        <h2
+          class="font-display font-bold text-2xl sm:text-3xl text-slate-100 mb-4"
+        >
+          ¿Trabajamos juntos?
+        </h2>
+        <p class="text-slate-400 mb-8 max-w-md mx-auto">
+          Disponible para nuevos proyectos y oportunidades fullstack.
+        </p>
+
+        <div
+          class="flex flex-col sm:flex-row items-center justify-center gap-3"
+        >
+          <a
+            href="mailto:soyemmanueldavezac@gmail.com"
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-amber text-bg font-semibold text-sm hover:bg-amber/90 transition-colors shadow-lg shadow-amber/10"
+          >
+            <Mail size={16} />
+            soyemmanueldavezac@gmail.com
+          </a>
+          <button
+            id="copy-email-btn"
+            type="button"
+            data-email='soyemmanueldavezac@gmail.com"'
+            class="inline-flex items-center gap-2 px-4 py-3 rounded-md bg-surface2 border border-line text-slate-300 hover:text-amber hover:border-amber/60 text-sm font-mono transition-all cursor-pointer"
+            title="Copiar email al portapapeles"
+          >
+            <Copy size={16} id="copy-icon" />
+            <Check size={16} id="check-icon" class="hidden text-amber" />
+            <span id="copy-text">Copiar</span>
+          </button>
+        </div>
+
+        <!-- Feedback visual de copiado -->
+        <p
+          id="copy-feedback"
+          class="mt-2 text-xs font-mono text-amber transition-opacity duration-200 opacity-0 select-none"
+        >
+          ✓ ¡Email copiado al portapapeles!
+        </p>
+
+        <div
+          class="mt-10 flex flex-wrap items-center justify-center gap-6 font-mono text-xs text-slate-400"
+        >
+          <a
+            href="https://wa.me/5493438471858?text=Hola%20Emmanuel,%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20conversar."
+            target="_blank"
+            rel="noopener"
+            class="hover:text-emerald-400 transition-colors flex items-center gap-1.5"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="currentColor"
+              class="text-emerald-400 shrink-0"
+            >
+              <path
+                d="M17.5 14.4c-.3-.1-1.7-.8-2-1-.3-.1-.5-.1-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-1.6-.7-2.7-1.5-3.5-2.9-.2-.3 0-.5.1-.6.1-.2.3-.4.5-.6.2-.2.2-.4.3-.6.1-.2 0-.4 0-.6-.1-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.4-1.2 1.2-1.2 2.9s1.2 3.4 1.4 3.6c.2.2 2.4 3.7 5.8 5.1 2.8 1.2 3.4 1 4 .9.7-.1 2.2-.9 2.5-1.8.3-.9.3-1.6.2-1.8-.1-.2-.3-.3-.6-.4zM12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.2L2 22l4.9-1.3C8.3 21.5 10.1 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.3.9.9-3.2-.2-.3c-.9-1.4-1.3-3-1.3-4.6 0-4.5 3.7-8.2 8.2-8.2s8.2 3.7 8.2 8.2-3.7 8.4-8.1 8.4z"
+              ></path>
+            </svg>
+            WhatsApp
+          </a>
+          <span>·</span>
+          <a
+            href="https://github.com/EmmaDavezac"
+            target="_blank"
+            rel="noopener"
+            class="hover:text-amber transition-colors flex items-center gap-1.5"
+          >
+            <Github size={14} />
+            GitHub
+          </a>
+          <span>·</span>
+          <a
+            href="https://linkedin.com/in/emmanueldavezac"
+            target="_blank"
+            rel="noopener"
+            class="hover:text-amber transition-colors flex items-center gap-1.5"
+          >
+            <Linkedin size={14} />
+            LinkedIn
+          </a>
+          <span>·</span>
+          <a
+            href="/cv.pdf"
+            download="CV-Luciano-Emmanuel-Davezac.pdf"
+            class="hover:text-amber transition-colors flex items-center gap-1.5"
+          >
+            <FileDown size={14} />
+            CV (PDF)
+          </a>
+        </div>
+
+        <p class="mt-10 text-xs text-slate-600">
+          Concepción del Uruguay, Entre Ríos, Argentina
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      const copyBtn = document.getElementById("copy-email-btn");
+      const copyText = document.getElementById("copy-text");
+      const copyIcon = document.getElementById("copy-icon");
+      const checkIcon = document.getElementById("check-icon");
+      const feedback = document.getElementById("copy-feedback");
+
+      if (copyBtn) {
+        copyBtn.addEventListener("click", async () => {
+          const email =
+            copyBtn.getAttribute("data-email") ||
+            "soyemmanueldavezac@gmail.com";
+          try {
+            await navigator.clipboard.writeText(email);
+            if (copyText) copyText.textContent = "¡Copiado!";
+            if (copyIcon) copyIcon.classList.add("hidden");
+            if (checkIcon) checkIcon.classList.remove("hidden");
+            if (feedback) feedback.classList.remove("opacity-0");
+
+            setTimeout(() => {
+              if (copyText) copyText.textContent = "Copiar";
+              if (copyIcon) copyIcon.classList.remove("hidden");
+              if (checkIcon) checkIcon.classList.add("hidden");
+              if (feedback) feedback.classList.add("opacity-0");
+            }, 2500);
+          } catch (err) {
+            console.error("Error al copiar:", err);
+          }
+        });
+      }
+    </script>
+  </body>
 </html>
