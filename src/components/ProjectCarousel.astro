@@ -17,20 +17,32 @@ const carouselId = `carousel-${projectName}`;
   id={carouselId} 
   data-total={totalImages}
 >
-  <!-- Track horizontal con GPU acceleration para transición ultra fluida -->
-  <div class="carousel-track flex w-full transition-transform duration-500 ease-out will-change-transform">
-    {images.map((src, index) => (
-      <div class="carousel-slide w-full shrink-0 aspect-[16/10] sm:aspect-[16/9] max-h-72 overflow-hidden bg-surface2 flex items-center justify-center">
-        <img 
-          src={src} 
-          alt={`${alt} — captura ${index + 1}`}
-          loading={index === 0 ? "eager" : "lazy"}
-          decoding="async"
-          class="w-full h-full object-cover object-center transition-transform duration-500 group-hover/carousel:scale-[1.02]"
-        />
-      </div>
-    ))}
-  </div>
+  {totalImages === 0 ? (
+    <div class="w-full aspect-[16/10] sm:aspect-[16/9] max-h-72 overflow-hidden bg-surface2 flex items-center justify-center">
+      <img 
+        src="/project-placeholder.svg" 
+        alt={`${alt} — vista previa no disponible`}
+        loading="lazy"
+        decoding="async"
+        class="w-full h-full object-cover object-center transition-transform duration-500 group-hover/carousel:scale-[1.02]"
+      />
+    </div>
+  ) : (
+    <div class="carousel-track flex w-full transition-transform duration-500 ease-out will-change-transform">
+      {images.map((src, index) => (
+        <div class="carousel-slide w-full shrink-0 aspect-[16/10] sm:aspect-[16/9] max-h-72 overflow-hidden bg-surface2 flex items-center justify-center">
+          <img 
+            src={src} 
+            alt={`${alt} — captura ${index + 1}`}
+            loading={index === 0 ? "eager" : "lazy"}
+            decoding="async"
+            onerror="this.onerror=null; this.src='/project-placeholder.svg';"
+            class="w-full h-full object-cover object-center transition-transform duration-500 group-hover/carousel:scale-[1.02]"
+          />
+        </div>
+      ))}
+    </div>
+  )}
   
   {totalImages > 1 && (
     <>

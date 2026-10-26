@@ -3,7 +3,20 @@
 // Portafolio — Emmanuel Davezac
 // Tailwind + Fontsource + lucide-astro instalados localmente (sin CDN).
 import "../styles/global.css";
-import { Github, Linkedin, Mail, FileDown, Copy, Check } from "lucide-astro";
+import {
+  Github,
+  Linkedin,
+  Mail,
+  FileDown,
+  Copy,
+  Check,
+  Server,
+  Code2,
+  Shield,
+  Database,
+  Terminal,
+  Cpu,
+} from "lucide-astro";
 import ProjectCarousel from "../components/ProjectCarousel.astro";
 ---
 
@@ -17,11 +30,11 @@ import ProjectCarousel from "../components/ProjectCarousel.astro";
     <title>Emmanuel Davezac — Fullstack Developer</title>
     <meta
       name="description"
-      content="Portafolio de Emmanuel Davezac, Fullstack Developer especializado en React, Django, .NET. Proyectos reales en producción: SGA, Secure Campus, E-Library, GIBD."
+      content="Portafolio de Emmanuel Davezac, Fullstack Developer especializado en React, Django, .NET, Spring Boot y Python. Proyectos: SGA, Secure Campus, Vincula Up, IndiAR, Evolet Studio, GIBD, E-Library."
     />
     <meta
       name="keywords"
-      content="Fullstack Developer, React, Django, .NET, TypeScript, JavaScript, Desarrollador Web"
+      content="Fullstack Developer, React, Django, .NET, TypeScript, JavaScript, Java, Spring Boot, Angular, Python, Flask, PostgreSQL, Docker, Vincula Up, IndiAR"
     />
     <meta name="author" content="Emmanuel Davezac" />
     <meta name="robots" content="index, follow" />
@@ -83,7 +96,7 @@ import ProjectCarousel from "../components/ProjectCarousel.astro";
       class="fixed top-0 inset-x-0 z-50 border-b border-line/60 bg-bg/80 backdrop-blur"
     >
       <nav
-        class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between"
+        class="max-w-7xl xl:max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 h-16 flex items-center justify-between"
       >
         <a
           href="#top"
@@ -119,9 +132,12 @@ import ProjectCarousel from "../components/ProjectCarousel.astro";
     </header>
 
     <!-- HERO -->
-    <section id="top" class="max-w-5xl mx-auto px-6 pt-36 sm:pt-44 pb-20">
+    <section
+      id="top"
+      class="max-w-7xl xl:max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 pt-36 sm:pt-44 pb-20"
+    >
       <div
-        class="flex flex-col-reverse md:flex-row items-center md:items-start justify-between gap-10 md:gap-12"
+        class="flex flex-col-reverse md:flex-row items-center md:items-start justify-between gap-10 md:gap-16"
       >
         <!-- Texto -->
         <div class="flex-1 text-center md:text-left">
@@ -131,17 +147,17 @@ import ProjectCarousel from "../components/ProjectCarousel.astro";
             whoami<span class="cursor">_</span>
           </p>
           <h1
-            class="font-display font-bold text-4xl sm:text-6xl text-slate-100 leading-[1.1] tracking-tight"
+            class="font-display font-bold text-4xl sm:text-6xl lg:text-7xl text-slate-100 leading-[1.1] tracking-tight"
           >
             Emmanuel<br />
             <span class="text-amber">Davezac</span>
           </h1>
           <p
-            class="mt-5 font-mono text-sm sm:text-base text-slate-400 max-w-xl"
+            class="mt-5 font-mono text-sm sm:text-base lg:text-lg text-slate-400 max-w-2xl"
           >
-            Fullstack Developer — React · Django · .NET
+            Fullstack Developer — React · Python · Java · .NET
           </p>
-          <p class="mt-6 text-slate-400 max-w-xl leading-relaxed">
+          <p class="mt-6 text-slate-400 max-w-2xl text-base sm:text-lg leading-relaxed text-justify">
             Me dedico a construir aplicaciones fullstack completas, del backend
             al frontend. Lo que más me interesa son los proyectos que resuelven
             algo concreto. Trabajo principalmente con React, Python, Java y
@@ -217,7 +233,7 @@ import ProjectCarousel from "../components/ProjectCarousel.astro";
 
           <!-- Marco de foto -->
           <div
-            class="relative w-44 h-44 sm:w-56 sm:h-56 rounded-2xl overflow-hidden border border-line group-hover:border-amber/60 bg-surface2 shadow-2xl transition-all duration-300"
+            class="relative w-44 h-44 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-2xl overflow-hidden border border-line group-hover:border-amber/60 bg-surface2 shadow-2xl transition-all duration-300"
           >
             <img
               src="/profile.webp"
@@ -233,7 +249,7 @@ import ProjectCarousel from "../components/ProjectCarousel.astro";
     <!-- PROYECTOS -->
     <section
       id="proyectos"
-      class="max-w-5xl mx-auto px-6 py-20 border-t border-line/60"
+      class="max-w-7xl xl:max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 py-20 border-t border-line/60"
     >
       <div class="mb-12">
         <p class="font-mono text-xs text-amber mb-2">proyectos/</p>
@@ -242,13 +258,23 @@ import ProjectCarousel from "../components/ProjectCarousel.astro";
         </h2>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
         <!-- Proyecto 1: Destacado Principal (Ancho completo en PC) -->
         <article
-          class="glow group rounded-xl border border-line bg-surface p-6 sm:p-8 md:col-span-2 flex flex-col md:flex-row gap-6 md:gap-8 items-start"
+          class="glow group relative rounded-xl border border-line bg-surface p-6 sm:p-8 md:col-span-2 lg:col-span-3 flex flex-col lg:flex-row gap-6 lg:gap-8 items-start"
         >
+          <!-- Tag móvil: Arriba a la derecha de la foto/card en mobile -->
+          <div class="absolute top-3.5 right-3.5 sm:top-4 sm:right-4 z-20 pointer-events-none lg:hidden">
+            <span
+              class="inline-flex items-center gap-1.5 font-mono text-[11px] sm:text-xs font-medium text-amber bg-surface/90 border border-amber/40 shadow-lg px-2.5 py-1 rounded backdrop-blur"
+            >
+              <span class="w-1.5 h-1.5 rounded-full bg-amber"></span>
+              Proyecto final de carrera
+            </span>
+          </div>
+
           <div
-            class="w-full md:w-1/2 shrink-0 overflow-hidden rounded-lg border border-line bg-surface2"
+            class="w-full lg:w-1/2 shrink-0 overflow-hidden rounded-lg border border-line bg-surface2"
           >
             <ProjectCarousel
               projectName="sga"
@@ -259,19 +285,21 @@ import ProjectCarousel from "../components/ProjectCarousel.astro";
           <div class="flex-1 flex flex-col justify-between h-full w-full">
             <div>
               <div
-                class="flex flex-wrap items-start justify-between gap-3 mb-3"
+                class="flex flex-wrap sm:flex-nowrap items-start justify-between gap-4 mb-3"
               >
                 <h3 class="font-display font-semibold text-xl text-slate-100">
                   SGA — Sistema de Gestión de Operaciones Aduaneras
                 </h3>
+                <!-- Tag desktop: Arriba a la derecha en la cabecera sin tapar el título -->
                 <span
-                  class="font-mono text-[11px] text-amber bg-amber/10 border border-amber/20 px-2.5 py-0.5 rounded whitespace-nowrap"
+                  class="hidden lg:inline-flex items-center gap-1.5 font-mono text-xs font-medium text-amber bg-surface2 border border-amber/40 shadow-md px-2.5 py-1 rounded backdrop-blur shrink-0 whitespace-nowrap self-start"
                 >
-                  proyecto final de carrera
+                  <span class="w-1.5 h-1.5 rounded-full bg-amber"></span>
+                  Proyecto final de carrera
                 </span>
               </div>
               <p
-                class="text-slate-400 leading-relaxed mb-5 text-sm sm:text-base"
+                class="text-slate-400 leading-relaxed mb-5 text-sm sm:text-base text-justify"
               >
                 Plataforma web full-stack para una empresa real de comercio
                 exterior (~100 operaciones mensuales, 74+ clientes), que
@@ -282,19 +310,24 @@ import ProjectCarousel from "../components/ProjectCarousel.astro";
               <div class="flex flex-wrap gap-2 mb-6">
                 <span
                   class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
-                  >React</span
+                  >Python</span
                 >
                 <span
                   class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
-                  >Django REST</span
+                  >Django</span
                 >
+                <span
+                  class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                  >React</span
+                >
+              
                 <span
                   class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
                   >JWT + CAPTCHA</span
                 >
                 <span
                   class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
-                  >Docker Compose</span
+                  >Docker</span
                 >
               </div>
             </div>
@@ -319,6 +352,7 @@ import ProjectCarousel from "../components/ProjectCarousel.astro";
           </div>
         </article>
 
+
         <!-- Proyecto 2 -->
         <article
           class="glow group rounded-xl border border-line bg-surface p-6 sm:p-7 flex flex-col justify-between h-full"
@@ -339,18 +373,23 @@ import ProjectCarousel from "../components/ProjectCarousel.astro";
               >
                 Secure Campus IA
               </h3>
-              <span
-                class="font-mono text-[11px] text-slate-500 whitespace-nowrap"
-                >trabajo en equipo · 3 devs</span
-              >
+             
             </div>
-            <p class="text-slate-400 leading-relaxed mb-5 text-sm">
+            <p class="text-slate-400 leading-relaxed mb-5 text-sm text-justify">
               Aplicación web con chat de IA construida con foco integral en
               seguridad informática: autenticación OAuth, Web Application
               Firewall, defensa multicapa contra prompt injection, cifrado de
               datos sensibles y auditoría.
             </p>
             <div class="flex flex-wrap gap-2 mb-6">
+            <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >React</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >Tailwind</span
+              >
               <span
                 class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
                 >Next.js</span
@@ -389,7 +428,93 @@ import ProjectCarousel from "../components/ProjectCarousel.astro";
           </div>
         </article>
 
-        <!-- Proyecto 3 -->
+
+        <!-- Proyecto 3: Vincula Up (en desarrollo) -->
+        <article
+          class="glow group relative rounded-xl border border-line bg-surface p-6 sm:p-7 flex flex-col justify-between h-full"
+        >
+          <!-- Tag En desarrollo arriba a la derecha de la card -->
+          <div class="absolute top-3.5 right-3.5 sm:top-4 sm:right-4 z-20 pointer-events-none">
+            <span
+              class="inline-flex items-center gap-1.5 font-mono text-[11px] sm:text-xs font-medium text-amber bg-surface/90 border border-amber/40 shadow-lg px-2.5 py-1 rounded backdrop-blur"
+            >
+              <span class="w-1.5 h-1.5 rounded-full bg-amber animate-pulse"></span>
+              En desarrollo
+            </span>
+          </div>
+
+          <div>
+            <div
+              class="mb-5 overflow-hidden rounded-lg border border-line bg-surface2"
+            >
+              <ProjectCarousel
+                projectName="vincula-up"
+                totalImages={0}
+                alt="Vincula Up - Plataforma de vinculación de oficios"
+              />
+            </div>
+            <div class="mb-3">
+              <h3
+                class="font-display font-semibold text-lg sm:text-xl text-slate-100"
+              >
+                Vincula Up — Plataforma de vinculación de oficios
+              </h3>
+            </div>
+            <p class="text-slate-400 leading-relaxed mb-5 text-sm text-justify">
+              Plataforma de vinculación entre clientes y profesionales de oficios técnicos con respaldo institucional de la Universidad Popular. Arquitectura de microservicios con BFF, gestión de turnos, coordinación por chat y calificación final.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >Java</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >Spring Boot</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >Angular</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >PostgreSQL</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >Keycloak</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >Docker</span
+              >
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-3 mt-auto pt-2">
+            <a
+              href="https://serifa-psi.vercel.app/"
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center justify-center rounded-md border border-emerald-500/60 bg-emerald-500/10 px-4 py-2 text-sm font-medium text-emerald-300 transition-colors hover:bg-emerald-500 hover:text-slate-950"
+            >
+              Demo Prototipo
+            </a>
+           
+            <a
+              href="https://github.com/EmmaDavezac/Vincula-UP"
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center justify-center rounded-md border border-slate-600 bg-surface2 px-4 py-2 text-sm font-medium text-slate-200 transition-colors hover:border-slate-400 hover:text-white"
+            >
+              Código
+            </a>
+          </div>
+        </article>
+
+      
+
+
+        <!-- Proyecto 4: Evolet Studio -->
         <article
           class="glow group rounded-xl border border-line bg-surface p-6 sm:p-7 flex flex-col justify-between h-full"
         >
@@ -400,21 +525,18 @@ import ProjectCarousel from "../components/ProjectCarousel.astro";
               <ProjectCarousel
                 projectName="evolet-nails"
                 totalImages={3}
-                alt="Evolet Nails - Sistema de Gestión"
+                alt="Evolet Studio - Sistema de Gestión"
               />
             </div>
             <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
               <h3
                 class="font-display font-semibold text-lg sm:text-xl text-slate-100"
               >
-                Evolet Nails — Sistema de Gestión
+                Evolet Studio — Sistema de Gestión
               </h3>
-              <span
-                class="font-mono text-[11px] text-slate-500 whitespace-nowrap"
-                >freelance · producción</span
-              >
+           
             </div>
-            <p class="text-slate-400 leading-relaxed mb-5 text-sm">
+            <p class="text-slate-400 leading-relaxed mb-5 text-sm text-justify">
               PWA full-stack desarrollada end-to-end para un salón de uñas real,
               digitalizando un flujo antes manejado en papel y WhatsApp: turnos,
               cobros, gastos, caja y estadísticas de negocio.
@@ -458,7 +580,8 @@ import ProjectCarousel from "../components/ProjectCarousel.astro";
           </div>
         </article>
 
-        <!-- Proyecto 4: GIBD -->
+
+        <!-- Proyecto 5: GIBD -->
         <article
           class="glow group rounded-xl border border-line bg-surface p-6 sm:p-7 flex flex-col justify-between h-full"
         >
@@ -478,12 +601,10 @@ import ProjectCarousel from "../components/ProjectCarousel.astro";
               >
                 GIBD — Grupo de Investigación en Bases de Datos
               </h3>
-              <span
-                class="font-mono text-[11px] text-slate-500 whitespace-nowrap"
-                >becario investigador</span
-              >
+        
+              
             </div>
-            <p class="text-slate-400 leading-relaxed mb-5 text-sm">
+            <p class="text-slate-400 leading-relaxed mb-5 text-sm text-justify">
               Plataforma web que unifica toda la información del grupo de
               investigación en bases de datos: publicación y gestión de papers
               científicos, noticias sobre investigaciones, y demostración
@@ -529,7 +650,63 @@ import ProjectCarousel from "../components/ProjectCarousel.astro";
           </div>
         </article>
 
-        <!-- Proyecto 5: E-Library -->
+  <!-- Proyecto 6: IndiAR -->
+        <article
+          class="glow group rounded-xl border border-line bg-surface p-6 sm:p-7 flex flex-col justify-between h-full"
+        >
+          <div>
+            <div
+              class="mb-5 overflow-hidden rounded-lg border border-line bg-surface2"
+            >
+              <ProjectCarousel
+                projectName="indi-ar"
+                totalImages={0}
+                alt="IndiAR - Tienda de Videojuegos Indie"
+              />
+            </div>
+            <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
+              <h3
+                class="font-display font-semibold text-lg sm:text-xl text-slate-100"
+              >
+                IndiAR — Tienda de Videojuegos Indie
+              </h3>
+            
+            </div>
+            <p class="text-slate-400 leading-relaxed mb-5 text-sm text-justify">
+              Plataforma web para catálogo y venta de videojuegos indie argentinos. Incluye slider interactivo, filtrado dinámico por categoría, carrito de compras, autenticación y panel de administración con módulos CRUD completos.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >Python</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >Flask</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >MySQL</span
+              >
+              
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >Docker</span
+              >
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-3 mt-auto pt-2">
+            <a
+              href="https://github.com/EmmaDavezac/IndiAr"
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center justify-center rounded-md border border-slate-600 bg-surface2 px-4 py-2 text-sm font-medium text-slate-200 transition-colors hover:border-slate-400 hover:text-white"
+            >
+              Código
+            </a>
+          </div>
+        </article>
+        <!-- Proyecto 7: E-Library -->
         <article
           class="glow group rounded-xl border border-line bg-surface p-6 sm:p-7 flex flex-col justify-between h-full"
         >
@@ -549,12 +726,9 @@ import ProjectCarousel from "../components/ProjectCarousel.astro";
               >
                 E-Library — Sistema de Gestión de Préstamos
               </h3>
-              <span
-                class="font-mono text-[11px] text-slate-500 whitespace-nowrap"
-                >proyecto final de cátedra</span
-              >
+              
             </div>
-            <p class="text-slate-400 leading-relaxed mb-5 text-sm">
+            <p class="text-slate-400 leading-relaxed mb-5 text-sm text-justify">
               Sistema de gestión de biblioteca desarrollado como proyecto final
               de Taller de Programación. Gestión completa de libros (integración
               con Open Library API), usuarios, préstamos y devoluciones, sistema
@@ -590,13 +764,14 @@ import ProjectCarousel from "../components/ProjectCarousel.astro";
             </a>
           </div>
         </article>
+
       </div>
     </section>
 
     <!-- EXPERIENCIA -->
     <section
       id="experiencia"
-      class="max-w-5xl mx-auto px-6 py-20 border-t border-line/60"
+      class="max-w-7xl xl:max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 py-20 border-t border-line/60"
     >
       <div class="mb-12">
         <p class="font-mono text-xs text-amber mb-2">experiencia/</p>
@@ -608,59 +783,10 @@ import ProjectCarousel from "../components/ProjectCarousel.astro";
       <div
         class="relative border-l border-line/80 ml-3 sm:ml-4 pl-6 sm:pl-8 space-y-10"
       >
-        <!-- Item 1: Becario de Investigación GIBD -->
+           <!-- Item 1: Desarrollador Fullstack Freelance -->
         <div class="relative group">
-          <div
-            class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-3.5 h-3.5 rounded-full border-2 border-bg bg-amber ring-4 ring-surface"
-          >
-          </div>
-          <div class="flex flex-wrap items-baseline justify-between gap-2 mb-1">
-            <h3
-              class="font-display font-semibold text-lg sm:text-xl text-slate-100 group-hover:text-amber transition-colors"
-            >
-              Becario de Investigación en Bases de Datos
-            </h3>
-            <span
-              class="font-mono text-xs text-amber bg-amber/10 border border-amber/20 px-2 py-0.5 rounded"
-            >
-              2024 — Presente
-            </span>
-          </div>
-          <p class="font-mono text-xs text-slate-400 mb-3">
-            GIBD — Grupo de Investigación en Bases de Datos · UTN FRCU
-          </p>
-          <p class="text-slate-400 text-sm leading-relaxed mb-4">
-            Participación activa en el desarrollo y mantenimiento de la
-            plataforma web institucional para la difusión de investigaciones
-            científicas, publicaciones académicas y demostradores interactivos
-            de prototipos y modelos de datos.
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <span
-              class="font-mono text-[11px] px-2.5 py-0.5 rounded bg-surface2 border border-line text-slate-300"
-              >React</span
-            >
-            <span
-              class="font-mono text-[11px] px-2.5 py-0.5 rounded bg-surface2 border border-line text-slate-300"
-              >TypeScript</span
-            >
-            <span
-              class="font-mono text-[11px] px-2.5 py-0.5 rounded bg-surface2 border border-line text-slate-300"
-              >Vite</span
-            >
-            <span
-              class="font-mono text-[11px] px-2.5 py-0.5 rounded bg-surface2 border border-line text-slate-300"
-              >Supabase</span
-            >
-          </div>
-        </div>
+                  <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-3.5 h-3.5 rounded-full border-2 border-bg bg-amber ring-4 ring-surface"></div>
 
-        <!-- Item 2: Desarrollador Fullstack Freelance -->
-        <div class="relative group">
-          <div
-            class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-3.5 h-3.5 rounded-full border-2 border-bg bg-slate-500 group-hover:bg-amber ring-4 ring-surface transition-colors"
-          >
-          </div>
           <div class="flex flex-wrap items-baseline justify-between gap-2 mb-1">
             <h3
               class="font-display font-semibold text-lg sm:text-xl text-slate-100 group-hover:text-amber transition-colors"
@@ -668,15 +794,15 @@ import ProjectCarousel from "../components/ProjectCarousel.astro";
               Desarrollador Fullstack Freelance
             </h3>
             <span
-              class="font-mono text-xs text-slate-400 bg-surface2 border border-line px-2 py-0.5 rounded"
+              class="font-mono text-xs text-amber bg-amber/10 border border-amber/20 px-2 py-0.5 rounded"
             >
-              2023 — Presente
+            2025 — Presente
             </span>
           </div>
           <p class="font-mono text-xs text-slate-400 mb-3">
             Clientes reales · Software en producción
           </p>
-          <p class="text-slate-400 text-sm leading-relaxed mb-4">
+          <p class="text-slate-400 text-sm leading-relaxed mb-4 text-justify">
             Diseño, arquitectura, desarrollo y despliegue integral de soluciones
             de software a medida. Implementación de sistemas de gestión
             empresarial en entornos reales: PWA para salón de belleza (Evolet
@@ -708,60 +834,60 @@ import ProjectCarousel from "../components/ProjectCarousel.astro";
           </div>
         </div>
 
-        <!-- Item 3: Desarrollo en Seguridad & Proyectos Universitarios -->
+        <!-- Item 2: Investigador GIBD -->
         <div class="relative group">
-          <div
-            class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-3.5 h-3.5 rounded-full border-2 border-bg bg-slate-500 group-hover:bg-amber ring-4 ring-surface transition-colors"
-          >
-          </div>
+          <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-3.5 h-3.5 rounded-full border-2 border-bg bg-amber ring-4 ring-surface"></div>
+          
           <div class="flex flex-wrap items-baseline justify-between gap-2 mb-1">
             <h3
               class="font-display font-semibold text-lg sm:text-xl text-slate-100 group-hover:text-amber transition-colors"
             >
-              Desarrollo en Proyectos de Ingeniería & Seguridad
+              Investigador
             </h3>
             <span
-              class="font-mono text-xs text-slate-400 bg-surface2 border border-line px-2 py-0.5 rounded"
+              class="font-mono text-xs text-amber bg-amber/10 border border-amber/20 px-2 py-0.5 rounded"
             >
-              2022 — 2026
+              2023 — Presente
             </span>
           </div>
           <p class="font-mono text-xs text-slate-400 mb-3">
-            UTN FRCU — Carrera de Ingeniería en Sistemas de Información
+            GIBD — Grupo de Investigación en Bases de Datos · UTN FRCU
           </p>
-          <p class="text-slate-400 text-sm leading-relaxed mb-4">
-            Liderazgo y desarrollo técnico en equipos de ingeniería.
-            Implementación de arquitecturas seguras (WAF, OAuth, mitigación de
-            inyecciones de prompt en IA con Secure Campus) y sistemas de
-            escritorio empresariales bajo el ecosistema .NET / C# con SQL
-            Server.
+          <p class="text-slate-400 text-sm leading-relaxed mb-4 text-justify">
+            Participación activa en el desarrollo y mantenimiento de la
+            plataforma web institucional para la difusión de investigaciones
+            científicas, publicaciones académicas y demostradores interactivos
+            de prototipos y modelos de datos.
           </p>
           <div class="flex flex-wrap gap-2">
             <span
               class="font-mono text-[11px] px-2.5 py-0.5 rounded bg-surface2 border border-line text-slate-300"
-              >Next.js</span
+              >React</span
             >
             <span
               class="font-mono text-[11px] px-2.5 py-0.5 rounded bg-surface2 border border-line text-slate-300"
-              >C# / .NET</span
+              >TypeScript</span
             >
             <span
               class="font-mono text-[11px] px-2.5 py-0.5 rounded bg-surface2 border border-line text-slate-300"
-              >Seguridad & OAuth</span
+              >Vite</span
             >
             <span
               class="font-mono text-[11px] px-2.5 py-0.5 rounded bg-surface2 border border-line text-slate-300"
-              >SQL Server</span
+              >Supabase</span
             >
           </div>
         </div>
+
+   
+       
       </div>
     </section>
 
     <!-- SKILLS -->
     <section
       id="skills"
-      class="max-w-5xl mx-auto px-6 py-20 border-t border-line/60"
+      class="max-w-7xl xl:max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 py-20 border-t border-line/60"
     >
       <div class="mb-12">
         <p class="font-mono text-xs text-amber mb-2">skills/</p>
@@ -770,153 +896,452 @@ import ProjectCarousel from "../components/ProjectCarousel.astro";
         </h2>
       </div>
 
-      <div class="grid sm:grid-cols-3 gap-6">
-        <div class="rounded-xl border border-line bg-surface p-6">
-          <h3
-            class="font-mono text-xs text-amber mb-4 uppercase tracking-wider"
-          >
-            Frontend
-          </h3>
-          <ul class="space-y-2.5 text-sm text-slate-300">
-            <li>React</li>
-            <li>Next.js</li>
-            <li>TypeScript</li>
-            <li>Vite</li>
-          </ul>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- 1. Backend & Microservicios -->
+        <div
+          class="glow group rounded-xl border border-line bg-surface p-6 flex flex-col justify-between hover:border-amber/50 transition-all duration-300"
+        >
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <div
+                class="p-2.5 rounded-lg bg-surface2 border border-line text-amber group-hover:scale-105 transition-transform"
+              >
+                <Server size={20} />
+              </div>
+              <div>
+                <h3
+                  class="font-display font-semibold text-lg text-slate-100 group-hover:text-amber transition-colors"
+                >
+                  Backend & Arquitectura
+                </h3>
+                <span class="font-mono text-[11px] text-slate-400"
+                  >Java · Python · APIs</span
+                >
+              </div>
+            </div>
+            <p class="text-xs text-slate-400 leading-relaxed mb-5 text-justify">
+              Diseño de APIs REST robustas, arquitectura en microservicios con patrón BFF, autenticación centralizada y lógica de negocio escalable.
+            </p>
+            <div class="flex flex-wrap gap-1.5">
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >Python (Django / FastAPI / Flask)</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >Java (Spring Boot)</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >.NET</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >Microservicios & BFF</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >APIs RESTful</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >Keycloak & OAuth 2.0</span
+              >
+            </div>
+          </div>
         </div>
-        <div class="rounded-xl border border-line bg-surface p-6">
-          <h3
-            class="font-mono text-xs text-amber mb-4 uppercase tracking-wider"
-          >
-            Backend
-          </h3>
-          <ul class="space-y-2.5 text-sm text-slate-300">
-            <li>Python — Django / Flask / FastAPI</li>
-            <li>C# / .NET</li>
-            <li>Java — Spring</li>
-            <li>APIs REST</li>
-          </ul>
+
+        <!-- 2. Frontend & Mobile -->
+        <div
+          class="glow group rounded-xl border border-line bg-surface p-6 flex flex-col justify-between hover:border-amber/50 transition-all duration-300"
+        >
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <div
+                class="p-2.5 rounded-lg bg-surface2 border border-line text-amber group-hover:scale-105 transition-transform"
+              >
+                <Code2 size={20} />
+              </div>
+              <div>
+                <h3
+                  class="font-display font-semibold text-lg text-slate-100 group-hover:text-amber transition-colors"
+                >
+                  Frontend & Mobile
+                </h3>
+                <span class="font-mono text-[11px] text-slate-400"
+                  >React · Next.js · Angular · Vue</span
+                >
+              </div>
+            </div>
+            <p class="text-xs text-slate-400 leading-relaxed mb-5 text-justify">
+              Interfaces modernas y reactivas con renderizado del lado del cliente y servidor, desarrollo móvil con Expo y PWAs offline-first.
+            </p>
+            <div class="flex flex-wrap gap-1.5">
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >React</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >Next.js</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >Angular</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >React Native</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >TypeScript</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >Tailwind</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >PWA</span
+              >
+            </div>
+          </div>
         </div>
-        <div class="rounded-xl border border-line bg-surface p-6">
-          <h3
-            class="font-mono text-xs text-amber mb-4 uppercase tracking-wider"
-          >
-            Herramientas & Metodologías
-          </h3>
-          <ul class="space-y-2.5 text-sm text-slate-300">
-            <li>PostgreSQL / MySQL / Supabase</li>
-            <li>Docker · Git / GitHub</li>
-            <li>Jira · SCRUM · Kanban</li>
-            <li>Vercel</li>
-          </ul>
+
+        <!-- 3. Seguridad Informática -->
+        <div
+          class="glow group rounded-xl border border-line bg-surface p-6 flex flex-col justify-between hover:border-amber/50 transition-all duration-300"
+        >
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <div
+                class="p-2.5 rounded-lg bg-surface2 border border-line text-amber group-hover:scale-105 transition-transform"
+              >
+                <Shield size={20} />
+              </div>
+              <div>
+                <h3
+                  class="font-display font-semibold text-lg text-slate-100 group-hover:text-amber transition-colors"
+                >
+                  Seguridad Informática
+                </h3>
+                <span class="font-mono text-[11px] text-slate-400"
+                  >WAF · OAuth · RLS · OWASP</span
+                >
+              </div>
+            </div>
+            <p class="text-xs text-slate-400 leading-relaxed mb-5">
+              Foco riguroso en seguridad de aplicaciones web, mitigación de vulnerabilidades, auditoría, cifrado y defensa en IA.
+            </p>
+            <div class="flex flex-wrap gap-1.5">
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >OAuth 2.0 / NextAuth / JWT</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >Web App Firewall</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >Mitigación OWASP Top 10</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >Row Level Security</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >Análisis estático</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >Prompt Injection Defense</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Bases de Datos -->
+        <div
+          class="glow group rounded-xl border border-line bg-surface p-6 flex flex-col justify-between hover:border-amber/50 transition-all duration-300"
+        >
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <div
+                class="p-2.5 rounded-lg bg-surface2 border border-line text-amber group-hover:scale-105 transition-transform"
+              >
+                <Database size={20} />
+              </div>
+              <div>
+                <h3
+                  class="font-display font-semibold text-lg text-slate-100 group-hover:text-amber transition-colors"
+                >
+                  Bases de Datos & Cloud
+                </h3>
+                <span class="font-mono text-[11px] text-slate-400"
+                  >SQL · Supabase</span
+                >
+              </div>
+            </div>
+            <p class="text-xs text-slate-400 leading-relaxed mb-5">
+              Diseño relacional sólido, consultas optimizadas, integridad de datos, migraciones y servicios gestionados en la nube.
+            </p>
+            <div class="flex flex-wrap gap-1.5">
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >PostgreSQL</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >MySQL</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >SQL Server</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >SQLite</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >Supabase</span
+              >
+             
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. DevOps & Cloud -->
+        <div
+          class="glow group rounded-xl border border-line bg-surface p-6 flex flex-col justify-between hover:border-amber/50 transition-all duration-300"
+        >
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <div
+                class="p-2.5 rounded-lg bg-surface2 border border-line text-amber group-hover:scale-105 transition-transform"
+              >
+                <Terminal size={20} />
+              </div>
+              <div>
+                <h3
+                  class="font-display font-semibold text-lg text-slate-100 group-hover:text-amber transition-colors"
+                >
+                  DevOps, Cloud & Herramientas
+                </h3>
+                <span class="font-mono text-[11px] text-slate-400"
+                  >Docker · Linux · Git</span
+                >
+              </div>
+            </div>
+            <p class="text-xs text-slate-400 leading-relaxed mb-5">
+              Containerización para entornos locales y producción, control de versiones, pipelines de despliegue y administración de servidores.
+            </p>
+            <div class="flex flex-wrap gap-1.5">
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >Docker</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >Git · GitHub Flow</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >Linux</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >Vercel</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >Render</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >SCRUM / Jira</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Ciencia de Datos, IA & IoT -->
+        <div
+          class="glow group rounded-xl border border-line bg-surface p-6 flex flex-col justify-between hover:border-amber/50 transition-all duration-300"
+        >
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <div
+                class="p-2.5 rounded-lg bg-surface2 border border-line text-amber group-hover:scale-105 transition-transform"
+              >
+                <Cpu size={20} />
+              </div>
+              <div>
+                <h3
+                  class="font-display font-semibold text-lg text-slate-100 group-hover:text-amber transition-colors"
+                >
+                  Ciencia de Datos, IA & IoT
+                </h3>
+                <span class="font-mono text-[11px] text-slate-400"
+                  >NLP · LLMs · Machine Learning · IoT</span
+                >
+              </div>
+            </div>
+            <p class="text-xs text-slate-400 leading-relaxed mb-5">
+              Investigación en procesamiento de lenguaje natural (GIBD), integración de modelos de lenguaje, automatización RPA y sistemas embebidos.
+            </p>
+            <div class="flex flex-wrap gap-1.5">
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >NLP</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >APIs LLM (Groq)</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >Pandas · NumPy · Scikit-learn</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >Jupyter · CRISP-DM</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >RPA (TagUI · Selenium)</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded bg-surface2 border border-line text-slate-300"
+                >IoT (ESP32 · Arduino)</span
+              >
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
+<!-- CONTENEDOR EDUCACIÓN Y CERTIFICACIONES -->
+  <div
+    class="max-w-7xl xl:max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 py-20 border-t border-line/60 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start"
+  >
     <!-- EDUCACIÓN -->
-    <section
-      id="educacion"
-      class="max-w-5xl mx-auto px-6 py-20 border-t border-line/60"
-    >
-      <div class="mb-12">
+    <section id="educacion" class="w-full">
+      <div class="mb-8">
         <p class="font-mono text-xs text-amber mb-2">educación/</p>
         <h2 class="font-display font-bold text-2xl sm:text-3xl text-slate-100">
           Educación
         </h2>
       </div>
 
-      <div class="space-y-4">
-        <div class="rounded-xl border border-line bg-surface p-5">
-          <p class="font-mono text-[11px] text-amber mb-2">2026</p>
-          <h3 class="font-semibold text-slate-100">
-            Analista Universitario en Desarrollo de Sistemas de Información
-          </h3>
-          <p class="mt-2 text-slate-400">UTN FRCU — finalizado</p>
-        </div>
-        <div class="rounded-xl border border-line bg-surface p-5">
-          <p class="font-mono text-[11px] text-amber mb-2">2019 — 2025</p>
+      <div class="flex flex-col gap-4">
+      <div class="rounded-xl border border-line bg-surface p-5">
+          <p class="font-mono text-[11px] text-amber mb-2">2019 — 2026</p>
           <h3 class="font-semibold text-slate-100">
             Ingeniería en Sistemas de Información
           </h3>
-          <p class="mt-2 text-slate-400">UTN FRCU — último cuatrimestre</p>
+          <p class="mt-2 text-slate-400 text-sm">UTN FRCU — último cuatrimestre</p>
         </div>
+
+        <div class="rounded-xl border border-line bg-surface p-5">
+          <p class="font-mono text-[11px] text-amber mb-2">2025</p>
+          <h3 class="font-semibold text-slate-100">
+            Analista Universitario en Desarrollo de Sistemas de Información
+          </h3>
+          <p class="mt-2 text-slate-400 text-sm">UTN FRCU — finalizado</p>
+        </div>
+        
         <div class="rounded-xl border border-line bg-surface p-5">
           <p class="font-mono text-[11px] text-amber mb-2">2023</p>
           <h3 class="font-semibold text-slate-100">
             Diplomatura Universitaria en Programación .NET
           </h3>
-          <p class="mt-2 text-slate-400">UTN FRRe</p>
+          <p class="mt-2 text-slate-400 text-sm">UTN FRRE</p>
         </div>
         <div class="rounded-xl border border-line bg-surface p-5">
           <p class="font-mono text-[11px] text-amber mb-2">2016</p>
           <h3 class="font-semibold text-slate-100">
             Tecnicatura en Electrónica
           </h3>
-          <p class="mt-2 text-slate-400">EET N°44 Dr. Luis F. Leloir</p>
+          <p class="mt-2 text-slate-400 text-sm">EET N°44 Dr. Luis F. Leloir</p>
         </div>
       </div>
     </section>
 
     <!-- CERTIFICACIONES -->
-    <section
-      id="certificaciones"
-      class="max-w-5xl mx-auto px-6 py-20 border-t border-line/60"
-    >
-      <div class="mb-12">
+    <section id="certificaciones" class="w-full">
+      <div class="mb-8">
         <p class="font-mono text-xs text-amber mb-2">certificaciones/</p>
         <h2 class="font-display font-bold text-2xl sm:text-3xl text-slate-100">
           Certificaciones
         </h2>
       </div>
 
-      <div class="grid gap-4 sm:grid-cols-2">
-        <div class="rounded-xl border border-line bg-surface p-5">
+      <div class="flex flex-col gap-4">
+      <div class="rounded-xl border border-line bg-surface p-5">
           <p class="font-mono text-[11px] text-amber mb-2">2026</p>
-          <h3 class="font-semibold text-slate-100">Python — freeCodeCamp</h3>
-        </div>
+          <h3 class="font-semibold text-slate-100">
+            Python
+          </h3>
+          <p class="mt-2 text-slate-400 text-sm">FreeCodeCamp</p>
+      </div>
         <div class="rounded-xl border border-line bg-surface p-5">
           <p class="font-mono text-[11px] text-amber mb-2">2023</p>
           <h3 class="font-semibold text-slate-100">
-            Full Stack Python — Codo a Codo 4.0
+          Full Stack Python 
           </h3>
-        </div>
+          <p class="mt-2 text-slate-400 text-sm">Codo a Codo 4.0</p>
+      </div>
         <div class="rounded-xl border border-line bg-surface p-5">
           <p class="font-mono text-[11px] text-amber mb-2">2023</p>
           <h3 class="font-semibold text-slate-100">
-            Full Stack Java — Codo a Codo 4.0
+          Full Stack Java
           </h3>
-        </div>
-        <div class="rounded-xl border border-line bg-surface p-5">
+          <p class="mt-2 text-slate-400 text-sm">Codo a Codo 4.0</p>
+      </div>
+      <div class="rounded-xl border border-line bg-surface p-5">
           <p class="font-mono text-[11px] text-amber mb-2">2023</p>
           <h3 class="font-semibold text-slate-100">
-            Diplomatura en Programación .NET — UTN FRRe
+           Diplomatura Universitaria en Programación .NET
           </h3>
+          <p class="mt-2 text-slate-400 text-sm">UTN FRRE</p>
         </div>
         <div class="rounded-xl border border-line bg-surface p-5">
           <p class="font-mono text-[11px] text-amber mb-2">2022</p>
           <h3 class="font-semibold text-slate-100">
-            Programación Web - Front End Developer — UTN BA
+            Diseñador UX/UI 
           </h3>
+          <p class="mt-2 text-slate-400 text-sm">Codo a Codo 4.0</p>
         </div>
         <div class="rounded-xl border border-line bg-surface p-5">
           <p class="font-mono text-[11px] text-amber mb-2">2022</p>
           <h3 class="font-semibold text-slate-100">
-            Diseñador UX/UI — Codo a Codo 4.0
+          Programación Web - Front End Developer
           </h3>
+          <p class="mt-2 text-slate-400 text-sm">UTN FRBA</p>
         </div>
+      
+        
+      
       </div>
     </section>
+  </div>
 
-    <!-- CONTACTO / FOOTER -->
+  <!-- CONTACTO / FOOTER -->
     <footer id="contacto" class="border-t border-line/60">
-      <div class="max-w-5xl mx-auto px-6 py-16 text-center">
+      <div
+        class="max-w-7xl xl:max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 py-16 text-center"
+      >
         <p class="font-mono text-xs text-amber mb-3">contacto/</p>
         <h2
           class="font-display font-bold text-2xl sm:text-3xl text-slate-100 mb-4"
         >
           ¿Trabajamos juntos?
         </h2>
-        <p class="text-slate-400 mb-8 max-w-md mx-auto">
+        <p class="text-slate-400 mb-8 max-w-xl mx-auto">
           Disponible para nuevos proyectos y oportunidades fullstack.
         </p>
 
